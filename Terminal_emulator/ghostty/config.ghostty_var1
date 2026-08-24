@@ -1,0 +1,58 @@
+# Убрать мигающий курсор
+cursor-style = block
+cursor-style-blink = false
+shell-integration-features = no-cursor
+
+# Полностью скрыть панель заголовка
+#gtk-titlebar = false
+
+# Cкрыть панель вкладок (Tabs Bar)
+#window-show-tab-bar = never
+
+# Скрыть панель когда окно развернуто на весь экран
+gtk-titlebar-hide-when-maximized = true
+
+# Убрать лигатуры, чтобы  вернуть стандартное отображение !=, ==, ->
+font-feature = -liga
+font-feature = -calt
+font-feature = -dlig
+
+# Прозрачность
+#background-opacity = 0.85
+#background-blur = true
+
+# Цветовая схема
+command = env TERM=xterm-256color bash
+# Замените bash на zsh, если используете zsh
+
+bold-is-bright = false
+palette-generate = false
+window-colorspace = srgb
+
+# 1. ОБЩИЙ СНИЙ ФОН ПАНЕЛЕЙ (Индекс 4):
+# palette = 4=#0044ff
+# palette = 4=#0044ee
+palette = 4=#0022aa
+# palette = 4=#0000ff
+
+# 2. ИМЕНА КАТАЛОГОВ И СКРЫТЫХ ФАЙЛОВ (Индексы 12 и 15):
+#palette = 12=#ffffff
+palette = 12=#b0b7bd
+palette = 15=#ffffff
+
+# 3. ВЕРХНЕЕ ПЕРВИЧНОЕ МЕНЮ (Индекс 6):
+# palette = 6=#394c39
+# palette = 6=#556b66
+palette = 6=#6d8580
+
+# 4. РАСПАХНУТОЕ ВТОРИЧНОЕ МЕНЮ (Индекс 7) И ЧЕРНАЯ ТЕНЬ (Индекс 8):
+# palette = 7=#556b66
+palette = 7=#6d8580
+palette = 8=#000000
+
+# 5. СЛУЖЕБНЫЙ ЧЕРНЫЙ (Индекс 0):
+palette = 0=#000000
+
+# 6. БУКВЫ (Индексы 3 и 11):
+palette = 3=#bfff80
+# palette = 11=#000000

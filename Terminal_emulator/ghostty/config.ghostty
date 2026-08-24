@@ -1,0 +1,52 @@
+# Убрать мигающий курсор
+cursor-style = block
+cursor-style-blink = false
+shell-integration-features = no-cursor
+
+# Полностью скрыть панель заголовка
+#gtk-titlebar = false
+
+# Cкрыть панель вкладок (Tabs Bar)
+#window-show-tab-bar = never
+
+# Скрыть панель когда окно развернуто на весь экран
+gtk-titlebar-hide-when-maximized = true
+
+# Убрать лигатуры, чтобы  вернуть стандартное отображение !=, ==, ->
+font-feature = -liga
+font-feature = -calt
+font-feature = -dlig
+
+# Прозрачность
+#background-opacity = 0.85
+#background-blur = true
+
+# Цветовая схема
+command = env TERM=xterm-256color bash
+# Замените bash на zsh, если используете zsh
+
+#bold-is-bright = false
+#palette-generate = false
+window-colorspace = srgb
+
+#theme = Cobalt2
+#theme = Zenbones Dark
+theme = Wez
+
+# Классическая 16-цветная VGA палитра для xterm
+palette = 0=#000000
+palette = 1=#aa0000
+palette = 2=#00aa00
+palette = 3=#aa5500
+palette = 4=#0000aa
+palette = 5=#aa00aa
+palette = 6=#00aaaa
+palette = 7=#aaaaaa
+palette = 8=#555555
+palette = 9=#ff5555
+palette = 10=#55ff55
+palette = 11=#ffff55
+palette = 12=#5555ff
+palette = 13=#ff55ff
+palette = 14=#55ffff
+palette = 15=#ffffff

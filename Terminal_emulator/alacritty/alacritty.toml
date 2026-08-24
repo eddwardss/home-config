@@ -1,0 +1,124 @@
+# =====================================================================
+# ВНЕШНИЙ ВИД (В самом верху файла)
+# =====================================================================
+
+[general]
+import = [
+#    "~/.config/alacritty/themes/themes/terminal_app.toml"
+    "~/.config/alacritty/themes/themes/chicago95.toml"
+]
+
+[window]
+resize_increments = true # Жёсткая синхронизация сетки символов
+opacity = 0.85          # Приятная легкая прозрачность (значение от 0.0 до 1.0)
+
+# Чтобы буквы не прижимались вплотную к краям графического контейнера tabbed
+[window.padding]
+x = 8                   # Отступ слева и справа (8 пикселей)
+y = 8                   # Отступ сверху и снизу (8 пикселей)
+
+# =====================================================================
+# НАСТРОЙКА ОБОЛОЧКИ И SSH
+# =====================================================================
+
+[terminal]
+[terminal.shell]
+args = ["-c", '''
+exec /bin/bash --rcfile <(echo '
+  source ~/.bashrc
+  # Каждая вкладка этого окна регистрирует свой реальный PID в общей папке
+  [ -n "$ALAC_WIN_ID" ] && echo "$$" > "/dev/shm/$ALAC_WIN_ID/$$"
+  
+  PROMPT_COMMAND="echo -ne \"\033]0;${USER}@${HOSTNAME}:${PWD/#$HOME/\~}\007\""
+  ssh() { if [ $# -gt 0 ]; then echo -ne "\033]0;${USER}@${!#}\007"; fi; command ssh "$@"; }
+')
+''']
+program = "/bin/bash"
+
+# =====================================================================
+# ГОРЯЧИЕ КЛАВИШИ (Каждый блок начинается строго с [[keyboard.bindings]])
+# =====================================================================
+
+# Увеличение шрифта по Ctrl + Плюс
+[[keyboard.bindings]]
+key = "Equals"
+mods = "Control"
+action = "IncreaseFontSize"
+
+# Уменьшение шрифта по Ctrl + Минус
+[[keyboard.bindings]]
+key = "Minus"
+mods = "Control"
+action = "DecreaseFontSize"
+
+
+# Переключиться на вкладку ВЛЕВО по Ctrl + Стрелка влево
+[[keyboard.bindings]]
+key = "Left"
+mods = "Control"
+[keyboard.bindings.command]
+program = "xdotool"
+args = ["key", "ctrl+shift+h"]
+
+# Переключиться на вкладку ВПРАВО по Ctrl + Стрелка вправо
+[[keyboard.bindings]]
+key = "Right"
+mods = "Control"
+[keyboard.bindings.command]
+program = "xdotool"
+args = ["key", "ctrl+shift+l"]
+
+
+# 1. Ctrl + W — Закрыть только ТЕКУЩУЮ одну активную вкладку
+[[keyboard.bindings]]
+action = "Quit"
+key = "W"
+mods = "Control"
+
+# 2. Ctrl + Shift + W — Закрыть окно, вернуть лимиты и чисто удалить папку из ОЗУ
+[[keyboard.bindings]]
+key = "W"
+mods = "Control|Shift"
+[keyboard.bindings.command]
+program = "/bin/bash"
+args = [
+    "-c",
+    """
+    if [ -n "$ALAC_WIN_ID" ] && [ -d "/dev/shm/$ALAC_WIN_ID" ]; then
+        # Извлекаем PID всех вкладок текущего окна и жестко убиваем их
+        for pid in $(ls "/dev/shm/$ALAC_WIN_ID" 2>/dev/null | grep -v "tab_xid"); do
+            kill -9 "$pid" >/dev/null 2>&1
+        done
+        
+        # Берем Window ID из файла и гасим строго этот текущий контейнер tabbed
+        real_xid=$(head -n 1 "/dev/shm/$ALAC_WIN_ID/tab_xid" 2>/dev/null | awk '{print $NF}')
+        if [ -n "$real_xid" ]; then
+            xkill -id "$real_xid" >/dev/null 2>&1
+        fi
+        
+        # Финальная чистка памяти: удаляем временную папку этого окна
+        rm -rf "/dev/shm/$ALAC_WIN_ID"
+    fi
+    """
+]
+
+# 3. Ctrl + T — открытие новой вкладки в текущей папке
+[[keyboard.bindings]]
+key = "T"
+mods = "Control"
+[keyboard.bindings.command]
+program = "/bin/bash"
+args = [
+    "-c",
+    """
+    # Считываем строго первую строчку, игнорируя последующие логи tabbed
+    real_xid=$(head -n 1 "/dev/shm/$ALAC_WIN_ID/tab_xid" 2>/dev/null | awk '{print $NF}')
+    if [ -n "$real_xid" ]; then
+        # Открываем вкладку в глубоком фоне, папка считывается за наносекунду
+        alacritty --embed "$real_xid" --working-directory . >/dev/null 2>&1 &
+    else
+        alacritty --working-directory . >/dev/null 2>&1 &
+    fi
+    """
+]
+
