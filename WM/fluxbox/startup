@@ -1,0 +1,60 @@
+#!/bin/sh
+#
+# fluxbox startup-script:
+#
+# Lines starting with a '#' are ignored.
+
+# Change your keymap:
+xmodmap "~/.Xmodmap"
+
+# Applications you want to run with fluxbox.
+# MAKE SURE THAT APPS THAT KEEP RUNNING HAVE AN ''&'' AT THE END.
+#
+# unclutter -idle 2 &
+# wmnd &
+# wmsmixer -w &
+# idesk &
+#
+
+# Debian-local change:
+#   - fbautostart has been added with a quick hack to check to see if it
+#     exists. If it does, we'll start it up by default.
+which fbautostart > /dev/null
+if [ $? -eq 0 ]; then
+    fbautostart
+fi
+
+# And last but not least we start fluxbox.
+# Because it is the last app you have to run it with ''exec'' before it.
+
+# Функция для безопасного завершения процессов ТОЛЬКО на текущем DISPLAY
+kill_local_process() {
+    local proc_name="$1"
+    local pids=$(pgrep -u $USER -f "$proc_name")
+    if [ -n "$pids" ]; then
+        echo "$pids" | xargs -I {} sh -c 'grep -q "DISPLAY=$DISPLAY" /proc/{}/environ 2>/dev/null && echo {}' | xargs kill 2>/dev/null
+    fi
+}
+
+# 1. Очищаем старые зависшие процессы именно этой графической сессии
+#kill_local_process "compton"
+kill_local_process "xxkb"
+kill_local_process "volumeicon"
+kill_local_process "parcellite"
+kill_local_process "nm-applet"
+
+# Ждем полсекунды для гарантированного закрытия портов и окон
+sleep 0.5
+
+# 2. Запускаем программы, если их бинарники существуют в системе
+#[ -x /usr/bin/compton ] && /usr/bin/compton -cC -i 0.6 -e 0.6 &
+[ -x /usr/bin/xxkb ] && /usr/bin/xxkb &
+[ -x /usr/bin/volumeicon ] && /usr/bin/volumeicon &
+[ -x /usr/bin/parcellite ] && /usr/bin/parcellite &
+[ -x /usr/bin/nm-applet ] && DISPLAY=$DISPLAY dbus-run-session nm-applet &
+
+sleep 0.5
+
+exec fluxbox
+# or if you want to keep a log:
+# exec fluxbox -log "~/.fluxbox/log"

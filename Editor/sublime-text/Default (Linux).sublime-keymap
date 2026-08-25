@@ -1,0 +1,15 @@
+[
+  { "keys": ["super+z"], "command": "repl_open", "caption": "Python - RUN current file", "id": "repl_python_run", "mnemonic": "d", "args":
+    {
+        "type": "subprocess",
+        "encoding": "utf8",
+        "cmd": ["python3", "-u", "$file_basename"],
+        "cwd": "$file_path",
+        "syntax": "Packages/Python/Python.tmLanguage",
+        "external_id": "python",
+        "extend_env": {"PYTHONIOENCODING": "utf-8", "PYTHONPATH":"/home/user/directory/folder"}
+    }
+  },
+  { "keys": ["super+ctrl+up"], "command": "select_lines", "args": {"forward": false} },
+  { "keys": ["super+ctrl+down"], "command": "select_lines", "args": {"forward": true} }
+]

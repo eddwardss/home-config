@@ -1,0 +1,21 @@
+{
+	"color_scheme": "Packages/User/Asphalt (SublimePythonIDE).tmTheme",
+//	"color_scheme": "Packages/User/base16-isotope.dark (SublimePythonIDE).tmTheme",
+	"highlight_line": true,                // подсветка текущей строки
+	"highlight_modified_tabs": true,       // выделение цветом таба с измененным кодом
+	"always_show_minimap_viewport": true,  // всегда отображать положение на миникарте
+	"draw_white_space": "all",             // отображать символы пробелов
+	"font_options":
+	[
+	"subpixel_antialias"               // сглаживание шрифтов
+	],
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+	"theme": "SodaSeti Dark.sublime-theme",
+	"dark_color_scheme": "Mariana.sublime-color-scheme",
+	"light_color_scheme": "Packages/Sunrise Theme/Scheme/Sunrise.tmTheme",
+	"index_files": true,
+	"font_size": 10,
+}

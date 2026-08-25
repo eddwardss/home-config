@@ -1,0 +1,4 @@
+[begin] (fluxbox)
+[include] (~/.fluxbox/fbfav)
+[include] (/etc/X11/fluxbox/fluxbox-menu)
+[end]

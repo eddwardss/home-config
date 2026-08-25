@@ -1,0 +1,12 @@
+menu "Программы1" folder {
+  prog "Kitty" /usr/share/icons/hicolor/scalable/apps/kitty.svg /usr/bin/kitty
+  prog "PcmanFM" /usr/share/icons/oxygen/base/32x32/apps/system-file-manager.png /usr/bin/pcmanfm
+  prog "Firefox" /usr/share/icons/hicolor/32x32/apps/firefox.png  /usr/bin/firefox
+  prog "Sublime Text" /usr/share/icons/hicolor/32x32/apps/sublime-text.png /usr/bin/subl
+  prog "Meld" /usr/share/icons/hicolor/scalable/apps/org.gnome.meld.svg /usr/bin/meld
+  prog "Gipm" /usr/share/icons/hicolor/32x32/apps/gimp.png /usr/bin/gimp
+  prog "mpv" /usr/share/icons/hicolor/32x32/apps/mpv.png /usr/bin/mpv
+  prog "virt-manager" /usr/share/icons/hicolor/32x32/apps/virt-manager.png /usr/bin/virt-manager
+  prog "nitrogen" /usr/share/icons/hicolor/32x32/apps/nitrogen.png /usr/bin/nitrogen
+  prog "xkill" /usr/share/icons/oxygen/base/32x32/actions/edit-delete.png /usr/bin/xkill
+}

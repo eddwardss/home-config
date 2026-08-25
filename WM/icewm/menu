@@ -1,0 +1,11 @@
+prog Terminal ! x-terminal-emulator -ls
+prog "Web Browser" ! x-www-browser
+prog HexChat hexchat hexchat
+prog Gimp gimp gimp
+#separator
+separator
+menufile Programs1 folder programs1
+separator
+includeprog icewm-menu-fdo --no-sep-others --seps
+menuprog Monitors ../devices/computer icewm-menu-xrandr
+menufile Toolbar folder toolbar

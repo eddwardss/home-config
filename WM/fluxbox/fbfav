@@ -1,0 +1,68 @@
+[submenu] (Приложения 1) {} <>
+    [exec] (Kitty) {/usr/bin/kitty} </usr/share/icons/hicolor/256x256/apps/kitty.png>
+    [exec] (xfce4-terminal) {/usr/bin/xfce4-terminal} </usr/share/icons/gnome/48x48/apps/terminal.png>
+    [exec] (PCmanFM) {/usr/bin/pcmanfm} <>
+    [exec] (Thunar) {/usr/bin/thunar} <>
+    [exec] (Chromium) {/usr/bin/chromium-browser } </usr/share/pixmaps/chromium.png>
+    [exec] (Firefox) {/usr/bin/firefox } </usr/share/icons/hicolor/48x48/apps/firefox-esr.png>
+    [exec] (Links 2) {/usr/bin/links2 -g} </usr/share/pixmaps/links2.xpm>
+    [exec] (Thunderbird) {/usr/bin/thunderbird } </usr/share/icons/hicolor/16x16/apps/thunderbird.png>
+    [exec] (Sublime Text) {/usr/bin/subl} </usr/share/icons/hicolor/48x48/apps/sublime-text.png>
+    [exec] (Mousepad) {/usr/bin/mousepad} <>
+    [exec] (Meld) {/usr/bin/meld} <>
+    [exec] (remmina) {/usr/bin/remmina} <>
+    [exec] (virt-manager) {/usr/bin/virt-manager} </usr/share/icons/hicolor/48x48/apps/virt-manager.png>
+    [submenu] (Офисные) {} <>
+        [exec] (LibreOffice) {/usr/bin/libreoffice} <>
+        [exec] (Zathura) {/usr/bin/zathura} <>
+    [end]
+    [submenu] (Фон) {} <>
+        [exec] (Nitrogen) {/usr/bin/nitrogen}
+        [submenu] (HDR) {} <>
+            [wallpapers] (~/Изображения/wallpapers1/HDR/) {feh --bg-scale} <>
+        [end]
+        [submenu] (горы) {} <>
+            [wallpapers] (~/Изображения/wallpapers1/горы/) {feh --bg-scale} <>
+        [end]
+        [submenu] (Ловоозёрск) {} <>
+            [wallpapers] (~/Изображения/wallpapers1/Ловоозёрск/) {feh --bg-scale} <>
+        [end]
+        [submenu] (небо) {} <>
+            [wallpapers] (~/Изображения/wallpapers1/небо/) {feh --bg-scale} <>
+        [end]
+        [submenu] (ночь) {} <>
+            [wallpapers] (~/Изображения/wallpapers1/ночь/) {feh --bg-scale} <>
+        [end]
+        [submenu] (космос) {} <>
+            [wallpapers] (~/Изображения/wallpapers1/космос/) {feh --bg-scale} <>
+        [end]
+        [submenu] (вода ) {} <>
+            [wallpapers] (~/Изображения/wallpapers1/вода/) {feh --bg-scale} <>
+        [end]
+        [submenu] (фэнтези) {} <>
+            [wallpapers] (~/Изображения/wallpapers1/фэнтези/) {feh --bg-scale} <>
+        [end]
+        [submenu] (апокалипсис) {} <>
+            [wallpapers] (~/Изображения/wallpapers1/апокалипсис/) {feh --bg-scale} <>
+        [end]
+        [submenu] (всячина) {} <>
+            [wallpapers] (~/Изображения/wallpapers1/всячина/) {feh --bg-scale} <>
+        [end]
+        [submenu] (урбанизм) {} <>
+            [wallpapers] (~/Изображения/wallpapers1/урбанизм/) {feh --bg-scale} <>
+        [end]
+        [submenu] (зима) {} <>
+            [wallpapers] (~/Изображения/wallpapers1/зима/) {feh --bg-scale} <>
+        [end]
+        [submenu] (осень) {} <>
+            [wallpapers] (~/Изображения/wallpapers1/осень/) {feh --bg-scale} <>
+        [end]
+        [submenu] (художественные) {} <>
+            [wallpapers] (~/Изображения/wallpapers1/художественные/) {feh --bg-scale} <>
+        [end]
+        [submenu] (Backgrounds) {} <>
+            [wallpapers] (~/.fluxbox/backgrounds) {} <>
+            [wallpapers] (/usr/share/backgrounds/backgrounds) {feh --bg-scale} <>
+        [end]
+    [end]
+[end]
